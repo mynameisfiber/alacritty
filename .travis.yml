@@ -35,8 +35,8 @@ before_deploy:
     export DEPLOY_FILE="$PWD/target/release/osx/Alacritty.dmg";
   fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
-    cargo install cargo-deb;
     cargo build --release;
+    cargo install cargo-deb;
     export DEPLOY_FILE=$( cargo deb --no-build );
   fi
 - echo "DEPLOYING FILE $DEPLOY_FILE";
